@@ -5,10 +5,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'Model/carPartsModel.dart';
-import 'Model/featuredCarModel.dart';
-import 'bookCarScreen.dart';
-import 'widgets/carPartsWidget.dart';
+import '../../Model/car_parts_model.dart';
+import '../../Model/featured_car_model.dart';
+import 'book_car_screen.dart';
+import '../widgets/car_parts_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   final FeaturedCarsModel items;
@@ -23,6 +23,7 @@ class DetailScreen extends StatelessWidget {
         height: 100.h,
         child: Stack(
           children: [
+            // MARK: - AppBar.
             Container(
               height: 45.h,
               width: 100.w,
@@ -33,14 +34,11 @@ class DetailScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  SizedBox(height: 5.h),
                   Row(
                     children: [
-                      SizedBox(
-                        width: 2.w,
-                      ),
+                      SizedBox(width: 2.w),
+                      // MARK: - Back Button.
                       IconButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -50,22 +48,23 @@ class DetailScreen extends StatelessWidget {
                           size: 24.sp,
                         ),
                       ),
-                      SizedBox(
-                        width: 2.w,
-                      ),
+                      SizedBox(width: 2.w),
+                      // MARK: - AppBar Title.
                       Text(
                         'Car Details',
-                        style: theme.headline3!.copyWith(
-                            fontSize: 21.sp,
-                            color: Colors.black,
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.w900),
+                        style: theme.displaySmall!.copyWith(
+                          fontSize: 21.sp,
+                          color: Colors.black,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
+            // MARK: - Car Details.
             Positioned(
               top: 35.h,
               child: Container(
@@ -82,11 +81,11 @@ class DetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 12.h,
-                      ),
+                      SizedBox(height: 12.h),
+                      // MARK: - Car Type.
                       Row(
                         children: [
+                          // MARK: - Car Type.
                           Container(
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 53, 53, 53),
@@ -105,9 +104,8 @@ class DetailScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 3.w,
-                          ),
+                          SizedBox(width: 3.w),
+                          // MARK: - Car Type.
                           Container(
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 53, 53, 53),
@@ -127,61 +125,53 @@ class DetailScreen extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
+                          // MARK: - Car Image.
                           Image.asset(
                             'assets/icons/lambo.png',
                             height: 6.5.h,
                           ),
-                          SizedBox(
-                            width: 6.w,
-                          )
+                          SizedBox(width: 6.w)
                         ],
                       ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
+                      SizedBox(height: 3.h),
+                      // MARK: - Car Name.
                       Text(
-                        items.carName + ' (2022)',
-                        style: theme.headline4!.copyWith(
+                        '${items.carName} (2022)',
+                        style: theme.headlineMedium!.copyWith(
                           fontSize: 20.sp,
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
+                      SizedBox(height: 2.h),
+                      // MARK: - Car Price.
                       Text(
                         items.pricePerDay,
-                        style: theme.headline4!.copyWith(
+                        style: theme.headlineMedium!.copyWith(
                           letterSpacing: 1.5,
                           fontSize: 19.5.sp,
-                          // ignore: prefer_const_constructors
                           color: const Color.fromARGB(255, 255, 196, 0),
                         ),
                       ),
-                      SizedBox(
-                        height: 1.5.h,
-                      ),
+                      SizedBox(height: 1.5.h),
+                      // MARK: - Car Parts.
                       FadeInLeft(
                         child: SizedBox(
                           height: 19.h,
                           child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
-                            itemCount: CarPartsModel.carpartsList.length,
+                            itemCount: CarPartsModel.carPartsList.length,
                             itemBuilder: (context, index) {
-                              final caritems =
-                                  CarPartsModel.carpartsList[index];
                               return CarPartsWidget(
                                 index: index,
-                                caritems: caritems,
+                                carItems: CarPartsModel.carPartsList[index],
                               );
                             },
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
+                      SizedBox(height: 4.h),
+                      // MARK: - Book Car Button.
                       Padding(
                         padding: EdgeInsets.only(right: 4.w),
                         child: InkWell(
@@ -189,8 +179,10 @@ class DetailScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    BookCarScreen(index: index, items: items),
+                                builder: (context) => BookCarScreen(
+                                  index: index,
+                                  items: items,
+                                ),
                               ),
                             );
                           },
@@ -206,7 +198,7 @@ class DetailScreen extends StatelessWidget {
                                   padding: const EdgeInsets.all(14.0),
                                   child: Text(
                                     'Book Car',
-                                    style: theme.headline4!.copyWith(
+                                    style: theme.headlineMedium!.copyWith(
                                       fontSize: 19.sp,
                                       color:
                                           const Color.fromARGB(255, 53, 53, 53),
@@ -223,6 +215,7 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // MARK: - Car Image.
             index == 0
                 ? Positioned(
                     top: 18.h,
@@ -234,10 +227,11 @@ class DetailScreen extends StatelessWidget {
                         height: 25.h,
                         width: 90.w,
                         decoration: BoxDecoration(
-                            //  color: Colors.teal,
-                            image: DecorationImage(
-                                image: AssetImage('assets/img/detailImg.png'),
-                                fit: BoxFit.cover)),
+                          image: DecorationImage(
+                            image: AssetImage('assets/img/detailImg.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   )
@@ -248,13 +242,14 @@ class DetailScreen extends StatelessWidget {
                         height: 25.h,
                         width: 100.w,
                         decoration: BoxDecoration(
-                            //  color: Colors.teal,
-                            image: DecorationImage(
-                                image: AssetImage(items.img),
-                                fit: BoxFit.fill)),
+                          image: DecorationImage(
+                            image: AssetImage(items.img),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
-                  )
+                  ),
           ],
         ),
       ),

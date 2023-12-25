@@ -3,21 +3,21 @@ import 'package:intl/intl.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class CalenderandTimeWidget extends StatefulWidget {
+class CalenderAndTimeWidget extends StatefulWidget {
   final String calender;
   final String time;
 
-  const CalenderandTimeWidget({
+  const CalenderAndTimeWidget({
     Key? key,
     required this.time,
     required this.calender,
   }) : super(key: key);
 
   @override
-  State<CalenderandTimeWidget> createState() => _CalenderandTimeWidgetState();
+  State<CalenderAndTimeWidget> createState() => _CalenderAndTimeWidgetState();
 }
 
-class _CalenderandTimeWidgetState extends State<CalenderandTimeWidget> {
+class _CalenderAndTimeWidgetState extends State<CalenderAndTimeWidget> {
   DateTime? _selectedDate;
   final DateFormat formatter = DateFormat('EEE, MMM d, y');
 

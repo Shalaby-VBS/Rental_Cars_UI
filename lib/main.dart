@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'View/home.dart';
+import 'ui/screens/home_screen.dart';
 import 'utils/theme.dart';
 
 void main() {
@@ -13,14 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveSizer(builder: (context, orientation, screenType) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Rental Car',
-        theme: lightThemeData(context),
-        darkTheme: darkThemeData(context),
-        home: const Home(),
-      );
-    });
+    return ResponsiveSizer(
+      builder: (context, orientation, screenType) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Rental Car',
+          theme: lightThemeData(context),
+          darkTheme: darkThemeData(context),
+          home: const HomeScreen(),
+        );
+      },
+    );
   }
 }

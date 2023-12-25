@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rental_car/View/widgets/featuredCarsWidget.dart';
+import 'package:rental_car/ui/widgets/featured_cars_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../Model/featuredCarModel.dart';
+import '../../Model/featured_car_model.dart';
 
 class CarsWidget extends StatelessWidget {
   const CarsWidget({super.key});
@@ -22,9 +22,7 @@ class CarsWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
-              height: 1.5.h,
-            ),
+            SizedBox(height: 1.5.h),
             Container(
               height: 0.8.h,
               width: 18.w,
@@ -33,19 +31,18 @@ class CarsWidget extends StatelessWidget {
                 color: const Color.fromARGB(255, 79, 79, 79),
               ),
             ),
-            SizedBox(
-              height: 3.h,
-            ),
+            SizedBox(height: 3.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 6.w),
               child: Row(
                 children: [
                   Text(
                     'Top Brands',
-                    style: theme.headline4!.copyWith(
-                        letterSpacing: 0.8,
-                        color: Colors.white,
-                        fontSize: 21.sp),
+                    style: theme.headlineMedium!.copyWith(
+                      letterSpacing: 0.8,
+                      color: Colors.white,
+                      fontSize: 21.sp,
+                    ),
                   ),
                   const Spacer(),
                   Container(
@@ -55,19 +52,22 @@ class CarsWidget extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: 4.w, right: 2.w, top: 0.5.h, bottom: 0.5.h),
+                        left: 4.w,
+                        right: 2.w,
+                        top: 0.5.h,
+                        bottom: 0.5.h,
+                      ),
                       child: Row(
                         children: [
                           const Text(
                             'More',
                             style: TextStyle(
-                                color: Colors.amber,
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w700),
+                              color: Colors.amber,
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                          SizedBox(
-                            width: 0.5.w,
-                          ),
+                          SizedBox(width: 0.5.w),
                           const Icon(
                             Icons.keyboard_arrow_right,
                             color: Colors.amber,
@@ -79,9 +79,7 @@ class CarsWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 3.h,
-            ),
+            SizedBox(height: 3.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 6.w),
               child: Row(
@@ -93,10 +91,11 @@ class CarsWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         color: const Color.fromARGB(255, 56, 57, 58)),
                     child: Center(
-                        child: Image.asset(
-                      'assets/icons/logo1.png',
-                      height: 7.h,
-                    )),
+                      child: Image.asset(
+                        'assets/icons/logo1.png',
+                        height: 7.h,
+                      ),
+                    ),
                   ),
                   Container(
                     height: 12.h,
@@ -106,10 +105,11 @@ class CarsWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         color: const Color.fromARGB(255, 56, 57, 58)),
                     child: Center(
-                        child: Image.asset(
-                      'assets/icons/merc.png',
-                      height: 7.h,
-                    )),
+                      child: Image.asset(
+                        'assets/icons/merc.png',
+                        height: 7.h,
+                      ),
+                    ),
                   ),
                   Container(
                     height: 12.h,
@@ -118,24 +118,23 @@ class CarsWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         color: const Color.fromARGB(255, 56, 57, 58)),
                     child: Center(
-                        child: Image.asset(
-                      'assets/icons/lambo.png',
-                      height: 7.h,
-                    )),
+                      child: Image.asset(
+                        'assets/icons/lambo.png',
+                        height: 7.h,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 3.h,
-            ),
+            SizedBox(height: 3.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 6.w),
               child: Row(
                 children: [
                   Text(
                     'Featured',
-                    style: theme.headline4!
+                    style: theme.headlineMedium!
                         .copyWith(color: Colors.white, fontSize: 21.sp),
                   ),
                   const Spacer(),
@@ -156,9 +155,7 @@ class CarsWidget extends StatelessWidget {
                                 letterSpacing: 1,
                                 fontWeight: FontWeight.w700),
                           ),
-                          SizedBox(
-                            width: 0.5.w,
-                          ),
+                          SizedBox(width: 0.5.w),
                           const Icon(
                             Icons.keyboard_arrow_right,
                             color: Colors.amber,
@@ -170,9 +167,7 @@ class CarsWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 3.h,
-            ),
+            SizedBox(height: 3.h),
             Padding(
               padding: EdgeInsets.only(left: 5.w),
               child: SizedBox(
@@ -192,6 +187,7 @@ class CarsWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            // MARK: - Bottom Navigation Bar.
             Container(
               height: 8.h,
               width: double.infinity,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../Model/carPartsModel.dart';
+import '../../Model/car_parts_model.dart';
 
 class CarPartsWidget extends StatelessWidget {
-  final CarPartsModel caritems;
+  final CarPartsModel carItems;
   final int index;
   const CarPartsWidget(
-      {super.key, required this.index, required this.caritems});
+      {super.key, required this.index, required this.carItems});
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +37,17 @@ class CarPartsWidget extends StatelessWidget {
                       height: 6.h,
                     ),
                     Text(
-                      caritems.carparts1,
-                      style: theme.headline4!.copyWith(
+                      carItems.carParts1,
+                      style: theme.headlineMedium!.copyWith(
                           letterSpacing: 0.5,
                           fontSize: 16.sp,
                           color: Colors.white,
                           fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
+                    SizedBox(height: 1.h),
                     Text(
-                      caritems.carparts2,
-                      style: theme.headline2!.copyWith(
+                      carItems.carParts2,
+                      style: theme.displayMedium!.copyWith(
                           letterSpacing: 1.5,
                           fontSize: 17.sp,
                           color: Colors.amber,
@@ -70,7 +68,7 @@ class CarPartsWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                    image: AssetImage(caritems.img), fit: BoxFit.cover),
+                    image: AssetImage(carItems.img), fit: BoxFit.cover),
               ),
             ),
           ),

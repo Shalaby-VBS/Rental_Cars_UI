@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 
 import 'package:flutter/material.dart';
-import 'package:rental_car/View/home.dart';
+import 'package:rental_car/ui/screens/home_screen.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'Model/featuredCarModel.dart';
-import 'widgets/calender&TimeWidget.dart';
+import '../../Model/featured_car_model.dart';
+import '../widgets/calender_time_widget.dart';
 
 class BookCarScreen extends StatefulWidget {
   final FeaturedCarsModel items;
@@ -20,15 +20,13 @@ class BookCarScreen extends StatefulWidget {
 class _BookCarScreenState extends State<BookCarScreen> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
-    DateTime? _selectedDate = DateTime.now();
     final theme = Theme.of(context).textTheme;
-
     return Scaffold(
       body: SizedBox(
         height: 100.h,
         child: Stack(
           children: [
+            // MARK: - Background Image.
             Positioned(
               top: 2.h,
               child: Container(
@@ -36,19 +34,16 @@ class _BookCarScreenState extends State<BookCarScreen> {
                 width: 100.w,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/img/next bg.png'),
-                      fit: BoxFit.fill),
+                    image: AssetImage('assets/img/next bg.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 0.h,
-                    ),
+                    // MARK: - Back Button.
                     Row(
                       children: [
-                        SizedBox(
-                          width: 2.w,
-                        ),
+                        SizedBox(width: 2.w),
                         IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -58,22 +53,15 @@ class _BookCarScreenState extends State<BookCarScreen> {
                             size: 24.sp,
                           ),
                         ),
-                        SizedBox(
-                          width: 2.w,
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        SizedBox(width: 2.w),
+                        SizedBox(height: 5.h),
                       ],
                     ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
+                    SizedBox(height: 2.h),
+                    // MARK: - Renter Image.
                     Row(
                       children: [
-                        SizedBox(
-                          width: 70.w,
-                        ),
+                        SizedBox(width: 70.w),
                         Container(
                           height: 8.h,
                           width: 17.w,
@@ -82,9 +70,10 @@ class _BookCarScreenState extends State<BookCarScreen> {
                                 color: const Color.fromARGB(255, 109, 109, 109),
                                 width: 1.2),
                             shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: AssetImage('assets/img/profile.jpg'),
-                                fit: BoxFit.cover),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/img/profile.png'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ],
@@ -93,6 +82,7 @@ class _BookCarScreenState extends State<BookCarScreen> {
                 ),
               ),
             ),
+            // MARK: - Car Details.
             Positioned(
               top: 35.h,
               child: SlideInUp(
@@ -108,19 +98,18 @@ class _BookCarScreenState extends State<BookCarScreen> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 5.w, right: 5.w),
                     child: SlideInUp(
-                      duration: Duration(milliseconds: 1800),
-                      delay: Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 1800),
+                      delay: const Duration(milliseconds: 100),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 8.h,
-                          ),
+                          SizedBox(height: 8.h),
+                          // MARK: - Car Details & Price.
                           Row(
                             children: [
                               Text(
                                 'Rent Details',
-                                style: theme.headline4!.copyWith(
+                                style: theme.headlineMedium!.copyWith(
                                   letterSpacing: 1.5,
                                   fontSize: 19.5.sp,
                                   color: Colors.white,
@@ -129,7 +118,7 @@ class _BookCarScreenState extends State<BookCarScreen> {
                               const Spacer(),
                               Text(
                                 widget.items.pricePerDay,
-                                style: theme.headline4!.copyWith(
+                                style: theme.headlineMedium!.copyWith(
                                   letterSpacing: 1.5,
                                   fontSize: 19.5.sp,
                                   color: const Color.fromARGB(255, 255, 196, 0),
@@ -137,9 +126,8 @@ class _BookCarScreenState extends State<BookCarScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 4.h,
-                          ),
+                          SizedBox(height: 4.h),
+                          // MARK: - Rent location.
                           Container(
                             height: 8.h,
                             width: 100.w,
@@ -160,74 +148,73 @@ class _BookCarScreenState extends State<BookCarScreen> {
                                     EdgeInsets.only(left: 4.w, bottom: 0.5.h),
                                 child: Text(
                                   'Pickup Location',
-                                  style: theme.headline6!.copyWith(
-                                      color: Color.fromARGB(255, 214, 214, 214),
-                                      fontSize: 17.5.sp,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1),
+                                  style: theme.titleLarge!.copyWith(
+                                    color: const Color.fromARGB(
+                                        255, 214, 214, 214),
+                                    fontSize: 17.5.sp,
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 1,
+                                  ),
                                 ),
                               ),
                               subtitle: Padding(
                                 padding: EdgeInsets.only(left: 4.w),
                                 child: Text(
-                                  'Miramer, San Diego',
-                                  style: theme.headline1!.copyWith(
-                                      color: Colors.white,
-                                      fontSize: 17.5.sp,
-                                      letterSpacing: 0.5),
+                                  'Cairo, Misr El-Gdida',
+                                  style: theme.displayLarge!.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 17.5.sp,
+                                    letterSpacing: 0.5,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 4.h,
+                          SizedBox(height: 4.h),
+                          // MARK: - Pick up Date & Time.
+                          const CalenderAndTimeWidget(
+                            calender: 'Pick-up-Date',
+                            time: 'Pick up Time',
                           ),
-                          const CalenderandTimeWidget(
-                              calender: 'Pick-up-Date', time: 'Pick up Time'),
-                          SizedBox(
-                            height: 2.h,
+                          SizedBox(height: 3.h),
+                          // MARK: - Drop off Date & Time.
+                          const CalenderAndTimeWidget(
+                            calender: 'Drop off Date',
+                            time: 'Drop off Time',
                           ),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          const CalenderandTimeWidget(
-                              calender: 'Drop off Date', time: 'Drop off Time'),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 9.h),
-                            child: FadeInLeft(
-                              delay: Duration(milliseconds: 500),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Home()));
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors.orange,
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(17.0),
-                                      child: Text(
-                                        'Proceed to Payment',
-                                        style: theme.headline4!.copyWith(
-                                          fontSize: 18.sp,
-                                          color: const Color.fromARGB(
-                                              255, 53, 53, 53),
-                                        ),
+                          SizedBox(height: 8.h),
+                          // MARK: - Proceed to Payment Button.
+                          FadeInLeft(
+                            delay: const Duration(milliseconds: 500),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen()));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.orange,
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(17.0),
+                                    child: Text(
+                                      'Proceed to Payment',
+                                      style: theme.headlineMedium!.copyWith(
+                                        fontSize: 18.sp,
+                                        color: const Color.fromARGB(
+                                            255, 53, 53, 53),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -235,21 +222,23 @@ class _BookCarScreenState extends State<BookCarScreen> {
                 ),
               ),
             ),
+            // MARK: - Car Image.
             widget.index == 0
                 ? Positioned(
                     top: 20.h,
                     left: 9.w,
                     right: 8.w,
                     child: SlideInRight(
-                      duration: Duration(milliseconds: 1800),
-                      delay: Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 1800),
+                      delay: const Duration(milliseconds: 100),
                       child: Container(
                         height: 25.h,
                         width: 100.w,
                         decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage('assets/img/bookCarImg.png'),
-                        )),
+                          image: DecorationImage(
+                            image: AssetImage('assets/img/bookCarImg.png'),
+                          ),
+                        ),
                       ),
                     ),
                   )
@@ -259,10 +248,11 @@ class _BookCarScreenState extends State<BookCarScreen> {
                       height: 25.h,
                       width: 100.w,
                       decoration: BoxDecoration(
-                          //  color: Colors.teal,
-                          image: DecorationImage(
-                              image: AssetImage(widget.items.img),
-                              fit: BoxFit.fill)),
+                        image: DecorationImage(
+                          image: AssetImage(widget.items.img),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
                   )
           ],

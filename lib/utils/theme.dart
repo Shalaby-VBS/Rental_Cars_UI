@@ -49,12 +49,12 @@ ThemeData darkThemeData(BuildContext context) {
     textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
         .apply(bodyColor: kContentColorDarkTheme)
         .copyWith(
-          headline1: TextStyle(
+          displayLarge: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: kContentColorDarkTheme,
           ),
-          headline2: TextStyle(
+          displayMedium: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.normal,
             color: kContentColorDarkTheme,
@@ -63,4 +63,4 @@ ThemeData darkThemeData(BuildContext context) {
   );
 }
 
-final appBarTheme = AppBarTheme(centerTitle: false, elevation: 0);
+const appBarTheme = AppBarTheme(centerTitle: false, elevation: 0);
