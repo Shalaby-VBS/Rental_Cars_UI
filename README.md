@@ -1,4 +1,4 @@
-# <div align="center">🏎️ Rent cars UI 🏎️</div>
+# <div align="center">🏎️ Rent Cars UI 🏎️</div>
 
 ## 🚀 Getting Started
 
